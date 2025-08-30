@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetSingelPostApi } from "../Services/PostApi";
+import { GetSinglePostApi } from "../Services/PostApi";
 import PostCard from "../Components/PostCard";
 import LoadingPost from "../Components/LoadingPost";
 
@@ -10,7 +10,7 @@ export default function PostDetails() {
   const [post, setpost] = useState(null);
 
   async function getPost() {
-    const response = await GetSingelPostApi(id);
+    const response = await GetSinglePostApi(id);
     if (response.message) {
       setpost(response.post);
     }
