@@ -19,7 +19,7 @@ export async function GetAllPostApi() {
   }
 }
 
-export async function GetSingelPostApi(postId) {
+export async function GetSinglePostApi(postId) {
   try {
     const { data } = await axios.get(
       "https://linked-posts.routemisr.com/posts/" + postId,

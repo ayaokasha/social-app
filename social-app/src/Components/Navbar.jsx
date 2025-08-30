@@ -26,7 +26,7 @@ export default function Navbar() {
   const { isLoggedIn, setIsLoggedIn, setUserData, userData } =
     useContext(AuthContext);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-//!avatar state for nav dont work
+//! Avatar state for nav doesn't work
   const [avatarSrc, setAvatarSrc] = useState(
     localStorage.getItem("avatar") || userData?.photo || ""
   );

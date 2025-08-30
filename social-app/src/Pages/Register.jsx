@@ -92,7 +92,7 @@ export default function Register() {
             errorMessage={errors.rePassword?.message}
             variant="underlined"
             label="RePassword"
-            type="Password"
+            type="password"
             {...register("rePassword")}
           />
 
@@ -132,7 +132,7 @@ export default function Register() {
           </Button>
 
           <div className="text-center text-gray-700 text-sm">
-            Have an acount?{" "}
+            Have an account?{" "}
             <Link
               to="/login"
               className="hover:text-[#27496d] transition-colors text-[#406882] font-semibold"
