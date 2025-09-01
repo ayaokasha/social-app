@@ -14,7 +14,7 @@ export default function PostAction({
   postId,
   callback,
   post,
-  onEdit, // <-- جديد: parent يمرر handler لفتح inline edit (للكومنت)
+  onEdit, 
 }) {
   const [loading, setLoading] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -40,12 +40,10 @@ export default function PostAction({
   }
 
   function handleEditClick() {
-    // لو في onEdit (يعني هذا PostAction مستعمل للكومنت)
     if (onEdit && commentId) {
-      onEdit(); // parent (Comments) سيتعامل مع ال-inline edit
+      onEdit(); 
       return;
     }
-    // خلاف ذلك (بوست) افتح نموذج التعديل (existing behavior)
     setEdit(true);
   }
 
