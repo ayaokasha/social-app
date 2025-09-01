@@ -7,13 +7,11 @@ import { UpdateCommentApi } from "../Services/CommentServices";
 export default function Comments({ comment, postUserId, callback }) {
   const { userData } = useContext(AuthContext);
 
-  // الحالة المحلية للتحرير inline
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(comment.content || "");
   const [loading, setLoading] = useState(false);
   const isMyComment = userData?._id === comment.commentCreator?._id;
 
-  // حفظ التعديل
   async function saveEdit() {
     if (!content.trim()) return;
     setLoading(true);
@@ -21,13 +19,10 @@ export default function Comments({ comment, postUserId, callback }) {
       const res = await UpdateCommentApi(comment._id, {
         content: content.trim(),
       });
-      // لو الـ API رجع نجاح -> حدث الـ UI
       if (res?.message || res?.success) {
-        // الأفضل أن الاب يجيب التعليقات من السيرفر بعد التحديث
-        await callback?.(); // parent يعيد جلب التعليقات
+        await callback?.();
         setEditing(false);
       } else {
-        // لو API ما رجعش رسالة نجاح، بس نعطي feedback
         console.error("UpdateCommentApi returned:", res);
       }
     } catch (err) {
@@ -48,7 +43,6 @@ export default function Comments({ comment, postUserId, callback }) {
           />
         </div>
 
-        {/* زر الخيارات فقط لمُنشئ الكومنت */}
         {isMyComment && (
           <div className="ml-2">
             <PostAction
@@ -56,7 +50,6 @@ export default function Comments({ comment, postUserId, callback }) {
               callback={callback}
               comment={comment}
               onEdit={() => {
-                // عندما ينادي PostAction.onEdit -> نفتح inline editor
                 setEditing(true);
                 setContent(comment.content || "");
               }}
@@ -65,7 +58,6 @@ export default function Comments({ comment, postUserId, callback }) {
         )}
       </div>
 
-      {/* المحتوى أو الـ inline editor */}
       <div className="ms-18.5 mt-0">
         {editing ? (
           <div className="space-y-2">
