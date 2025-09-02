@@ -1,15 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useGet from "../Hooks/useGet";
-
-
 
 export default function NotFoundPage() {
-
-  // const { data } = useGet(api);
-  // console.log(data.data.data);
-
-
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen">
       <div className="container mx-auto px-4 text-center">
