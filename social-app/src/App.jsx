@@ -12,6 +12,9 @@ import ProtectedRoutes from "./Layouts/ProtectedRoutes";
 import AuthProtectedRoutes from "./Layouts/AuthProtectedRoutes";
 
 export default function App() {
+  //notes on app
+  //Fix: Tailwind v4 config working, HeroUI styling pending v4 compatibility
+
   const router = createBrowserRouter([
     {
       path: "",
